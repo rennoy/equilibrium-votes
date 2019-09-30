@@ -29,7 +29,7 @@ public class ElectionConfigurationFiveTen implements ElectionConfiguration {
         Flux<Vote> votesFlux =
                 eosElectionFromCsv.getCandidates().map(candidate ->
                         new Vote(
-                                new Elector(candidate.getName(),
+                                new Elector(candidate.getCandidateDesc().getName(),
                                             candidate.getStakes().doubleValue()),
                                 new Candidate[] {candidate},
                                 candidate.getStakes()));

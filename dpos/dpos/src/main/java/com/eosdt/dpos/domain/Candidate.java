@@ -12,14 +12,9 @@ import lombok.experimental.Wither;
 public class Candidate {
 
     /**
-     * candidate's name
+     * candidate's description - statics
      */
-    private final String name;
-
-    /**
-     * candidate's country
-     */
-    private final String country;
+    private final CandidateDesc candidateDesc;
 
     /**
      * candidate's rank

@@ -21,7 +21,7 @@ public class JsonArrayToCandidatesArrayConverter implements Converter<JSONArray,
 
         return  Flux.range(0, objects.length())
                 .flatMap(i -> eosElectionFromCsv.getCandidates()
-                        .filter(c -> c.getName().equals(objects.get(i).toString()))
+                        .filter(c -> c.getCandidateDesc().getName().equals(objects.get(i).toString()))
                         .take(1))
                 .toStream()
                 .toArray(Candidate[]::new);

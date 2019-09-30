@@ -1,6 +1,7 @@
 package com.eosdt.dpos.service;
 
 import com.eosdt.dpos.domain.Candidate;
+import com.eosdt.dpos.domain.CandidateDesc;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -39,8 +40,10 @@ public class EOSElectionFromCsv {
                                                 String[] splitter = line.split(";");
 
                                                 return new Candidate(
-                                                        splitter[1].replace("\"", ""),
-                                                        splitter[3].replace("\"", ""),
+                                                        CandidateDesc.builder()
+                                                                .name(splitter[1].replace("\"", ""))
+                                                                .country(splitter[3].replace("\"", ""))
+                                                                .build(),
                                                         Integer.parseInt(splitter[0].replace("\"", "")),
                                                         Integer.parseInt(splitter[7].replace("\"", "")),
                                                         Double.parseDouble(splitter[6].replace("\"", "")),
