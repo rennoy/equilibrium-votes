@@ -1,19 +1,18 @@
-package com.eosdt.dpos.config;
+package com.eosdt.dpos.configuration;
 
 import com.eosdt.dpos.domain.*;
 import com.eosdt.dpos.service.EOSElectionFromCsv;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 
-import java.util.function.BinaryOperator;
-
-@Configuration
-public class ElectionConfiguration {
+@Component
+@Profile("election_configuration_five_ten")
+public class ElectionConfigurationFiveTen implements ElectionConfiguration {
 
     private final EOSElectionFromCsv eosElectionFromCsv;
 
-    public ElectionConfiguration(EOSElectionFromCsv eosElectionFromCsv) {
+    public ElectionConfigurationFiveTen(EOSElectionFromCsv eosElectionFromCsv) {
         this.eosElectionFromCsv = eosElectionFromCsv;
     }
 
@@ -25,13 +24,13 @@ public class ElectionConfiguration {
      * 1 candidate = 1 vote = total EOS staked for the candidate
      * @return Election object
      */
-    @Bean
     public Election EOSElection() {
 
         Flux<Vote> votesFlux =
                 eosElectionFromCsv.getCandidates().map(candidate ->
                         new Vote(
-                                new Elector(candidate.getName()),
+                                new Elector(candidate.getName(),
+                                            candidate.getStakes().doubleValue()),
                                 new Candidate[] {candidate},
                                 candidate.getStakes()));
 
@@ -58,8 +57,7 @@ public class ElectionConfiguration {
         );
     }
 
-    @Bean
-    public ElectionParams fiveTenElection() {
+    public ElectionParams equilibriumElection() {
 
         return new ElectionParams(
                 100,

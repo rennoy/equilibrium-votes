@@ -4,7 +4,7 @@ import com.eosdt.dpos.domain.Candidate;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 
 import java.nio.file.Files;
@@ -14,8 +14,8 @@ import java.util.stream.BaseStream;
 
 @Slf4j
 @Setter
-@Component
-@ConfigurationProperties("eos_election_from_csv")
+@Service
+@ConfigurationProperties("eoselection")
 public class EOSElectionFromCsv {
 
     private String name;
@@ -35,14 +35,17 @@ public class EOSElectionFromCsv {
                                 .skip(1)
                                 .map(line -> {
                                             try {
+
+                                                String[] splitter = line.split(";");
+
                                                 return new Candidate(
-                                                        line.split(",")[1],
-                                                        line.split(",")[3],
-                                                        Integer.parseInt(line.split(",")[0]),
-                                                        Integer.parseInt(line.split(",")[7]),
-                                                        Double.parseDouble(line.split(",")[6]),
-                                                        Integer.parseInt(line.split(",")[8]),
-                                                        Integer.parseInt(line.split(",")[9])
+                                                        splitter[1].replace("\"", ""),
+                                                        splitter[3].replace("\"", ""),
+                                                        Integer.parseInt(splitter[0].replace("\"", "")),
+                                                        Integer.parseInt(splitter[7].replace("\"", "")),
+                                                        Double.parseDouble(splitter[6].replace("\"", "")),
+                                                        Integer.parseInt(splitter[8].replace("\"", "")),
+                                                        Integer.parseInt(splitter[9].replace("\"", ""))
                                                 );
                                             } catch (Exception e) {
                                                 e.printStackTrace();

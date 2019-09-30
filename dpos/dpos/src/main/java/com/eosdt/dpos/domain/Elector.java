@@ -6,5 +6,5 @@ import lombok.Data;
 public class Elector {
 
     private final String name;
-    private Double holdings;
+    private final Double holdings;
 }

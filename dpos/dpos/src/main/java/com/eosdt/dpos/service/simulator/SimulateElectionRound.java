@@ -1,4 +1,4 @@
-package com.eosdt.dpos.service;
+package com.eosdt.dpos.service.simulator;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
