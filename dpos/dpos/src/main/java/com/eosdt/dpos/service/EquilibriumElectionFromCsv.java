@@ -71,7 +71,7 @@ public class EquilibriumElectionFromCsv {
                 ,
                 Flux::fromStream,
                 BaseStream::close
-        ).share();
+        );
 
     }
 }

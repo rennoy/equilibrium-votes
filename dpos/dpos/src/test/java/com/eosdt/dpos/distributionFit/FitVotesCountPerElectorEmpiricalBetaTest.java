@@ -1,8 +1,7 @@
 package com.eosdt.dpos.distributionFit;
 
 
-import com.eosdt.dpos.service.distributionFit.FitVotesCountPerElectorBetaDist;
-import com.eosdt.dpos.service.distributionFit.FitVotesCountPerElectorEmpiricalDist;
+import com.eosdt.dpos.service.distributionFit.FitVotesCountPerElectorBetaDensity;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +16,7 @@ import java.util.Map;
 public class FitVotesCountPerElectorEmpiricalBetaTest {
 
     @Autowired
-    private FitVotesCountPerElectorBetaDist fitVotesCountPerElectorBetaDist;
+    private FitVotesCountPerElectorBetaDensity fitVotesCountPerElectorBetaDist;
 
     @Test
     public void FitVotesCountPerElectorDistTest() {

@@ -1,7 +1,7 @@
 package com.eosdt.dpos.distributionFit;
 
 
-import com.eosdt.dpos.service.distributionFit.FitVotesCountPerElectorEmpiricalDist;
+import com.eosdt.dpos.service.distributionFit.FitVotesCountPerElectorEmpiricalDensity;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,10 +16,10 @@ import java.util.Map;
 public class FitVotesCountPerElectorEmpiricalDistTest {
 
     @Autowired
-    private FitVotesCountPerElectorEmpiricalDist fitVotesCountPerElectorEmpiricalDist;
+    private FitVotesCountPerElectorEmpiricalDensity fitVotesCountPerElectorEmpiricalDist;
 
     @Test
-    public void FitVotesCountPerElectorDistTest() throws Exception {
+    public void FitVotesCountPerElectorDistTest() {
 
         Map<Integer, Double> fit = this.fitVotesCountPerElectorEmpiricalDist.fit();
         Assert.assertTrue(fit.values().size() > 0);

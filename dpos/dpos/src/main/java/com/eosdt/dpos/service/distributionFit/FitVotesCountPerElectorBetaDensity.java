@@ -1,35 +1,34 @@
 package com.eosdt.dpos.service.distributionFit;
 
-import com.eosdt.dpos.configuration.ElectionConfiguration;
+import com.eosdt.dpos.election.ElectionConfiguration;
 import com.eosdt.dpos.domain.Candidate;
 import com.eosdt.dpos.domain.Vote;
 import com.eosdt.dpos.service.EquilibriumElectionFromCsv;
 import org.apache.commons.math3.distribution.BetaDistribution;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 
 import java.lang.reflect.Array;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
-public class FitVotesCountPerElectorBetaDist implements FitVotesCountPerElectorDist {
+@Profile("fit_votes_count_per_elector_beta_dist")
+public class FitVotesCountPerElectorBetaDensity implements FitVotesCountPerElectorDensity {
 
     private final ElectionConfiguration electionConfiguration;
 
     private final EquilibriumElectionFromCsv equilibriumElectionFromCsv;
 
-    public FitVotesCountPerElectorBetaDist(ElectionConfiguration electionConfiguration,
-                                           EquilibriumElectionFromCsv equilibriumElectionFromCsv) {
+    public FitVotesCountPerElectorBetaDensity(ElectionConfiguration electionConfiguration,
+                                              EquilibriumElectionFromCsv equilibriumElectionFromCsv) {
         this.electionConfiguration = electionConfiguration;
         this.equilibriumElectionFromCsv = equilibriumElectionFromCsv;
     }
 
     @Override
     public Map<Integer, Double> fit() {
-
-        final Map<Integer, Double> dist = new HashMap<>();
 
         Integer maxVotesPerElector = electionConfiguration.equilibriumElection().getNMaxVotesPerElector();
 

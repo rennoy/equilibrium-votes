@@ -1,4 +1,4 @@
-package com.eosdt.dpos.configuration;
+package com.eosdt.dpos.election;
 
 import com.eosdt.dpos.domain.Election;
 import com.eosdt.dpos.domain.ElectionParams;

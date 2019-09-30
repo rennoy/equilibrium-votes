@@ -1,39 +1,35 @@
 package com.eosdt.dpos.service.distributionFit;
 
-import com.eosdt.dpos.configuration.ElectionConfiguration;
 import com.eosdt.dpos.domain.Candidate;
 import com.eosdt.dpos.domain.Vote;
 import com.eosdt.dpos.service.EquilibriumElectionFromCsv;
+import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 
 import java.lang.reflect.Array;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
-public class FitVotesCountPerElectorEmpiricalDist implements FitVotesCountPerElectorDist {
-
-    private final ElectionConfiguration electionConfiguration;
+@Profile("fit_votes_count_per_elector_empirical_dist")
+@Primary
+public class FitVotesCountPerElectorEmpiricalDensity implements FitVotesCountPerElectorDensity {
 
     private final EquilibriumElectionFromCsv equilibriumElectionFromCsv;
 
     /**
      * Empirical distribution based on an Equilibrium vote
-     * @param electionConfiguration
-     * @param equilibriumElectionFromCsv
+     * @param equilibriumElectionFromCsv service to get a static view of the Equilibrium election -
+     *                                   used to fit distributions
      */
-    public FitVotesCountPerElectorEmpiricalDist(ElectionConfiguration electionConfiguration,
-                                                EquilibriumElectionFromCsv equilibriumElectionFromCsv) {
-        this.electionConfiguration = electionConfiguration;
+    public FitVotesCountPerElectorEmpiricalDensity(EquilibriumElectionFromCsv equilibriumElectionFromCsv) {
         this.equilibriumElectionFromCsv = equilibriumElectionFromCsv;
     }
 
     @Override
     public Map<Integer, Double> fit() {
-
-        final Map<Integer, Double> dist = new HashMap<>();
 
         Flux<Candidate[]> candidates =
                 this.equilibriumElectionFromCsv.getVotes()

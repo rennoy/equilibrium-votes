@@ -1,4 +1,4 @@
-package com.eosdt.dpos.configuration;
+package com.eosdt.dpos.election;
 
 import com.eosdt.dpos.domain.*;
 import com.eosdt.dpos.service.EOSElectionFromCsv;
@@ -36,6 +36,7 @@ public class ElectionConfigurationFiveTen implements ElectionConfiguration {
 
 
         Vote[] votes = votesFlux.toStream().toArray(Vote[]::new);
+
         Integer totalStake = votesFlux.toStream()
                 .mapToInt(Vote::getStake)
                 .sum();
@@ -53,6 +54,7 @@ public class ElectionConfigurationFiveTen implements ElectionConfiguration {
 
         return new Election(
                 electionParams,
+                eosElectionFromCsv.getCandidates().toStream().toArray(Candidate[]::new),
                 votes
         );
     }
