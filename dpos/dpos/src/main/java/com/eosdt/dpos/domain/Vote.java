@@ -7,6 +7,6 @@ public class Vote {
 
     private final Elector elector;
     private final Candidate[] candidates;
-    private final Double weight;
+    private final Integer stake;
 
 }
