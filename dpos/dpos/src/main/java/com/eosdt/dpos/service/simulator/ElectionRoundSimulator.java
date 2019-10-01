@@ -69,7 +69,7 @@ public class ElectionRoundSimulator {
                         NUTholdings
                 );
 
-                // An elector who has belo-0 NUT holdings can't vote.
+                // An elector who has below-2.0 NUT holdings can't vote.
 
                 if (NUTholdings < 2.0) {
                     return new Vote(elector,

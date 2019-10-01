@@ -1,21 +1,25 @@
-package com.eosdt.dpos.service;
+package com.eosdt.dpos.config;
 
 import com.eosdt.dpos.domain.Candidate;
 import com.eosdt.dpos.domain.CandidateDesc;
+import com.eosdt.dpos.domain.CandidatesInit;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Service;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import reactor.core.publisher.Flux;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.stream.BaseStream;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Setter
-@Service
+@Configuration
 @ConfigurationProperties("eoselection")
 public class EOSElectionFromCsv {
 
@@ -24,13 +28,14 @@ public class EOSElectionFromCsv {
     /**
      * Parsing a structured text file with columns
      * Rank, Account, Status, Country, Staked pct, EOS Staked Jump, Reward, Votes, Votes diff. with contender, Jump in votes
-     * @return Candidates
+     * @return CandidatesInit
      */
-    public Flux<Candidate> getCandidates() {
+    @Bean
+    public CandidatesInit getCandidatesInit() {
 
         Path path = Paths.get(name);
 
-        return Flux.using(
+        List<Candidate> candidates = Flux.using(
                 () ->
                         Files.lines(path)
                                 .skip(1)
@@ -59,8 +64,25 @@ public class EOSElectionFromCsv {
                 ,
                 Flux::fromStream,
                 BaseStream::close
-        );
 
+        ).toStream().collect(Collectors.toList());
+
+        return new CandidatesInit(candidates);
+    }
+
+    /**
+     * returns a single candidate - search in the db
+     * @param name name of the candidate (account name)
+     * @return the Candidate or a new Candidate if not found in the initial list
+     */
+    public Candidate getCandidate(String name) {
+        return getCandidatesInit().getCandidates()
+                .stream()
+                .filter(c -> c.getCandidateDesc().getName().equals(name))
+                .findFirst()
+                .orElse(Candidate.builder()
+                        .candidateDesc(CandidateDesc.builder().name(name).build())
+                        .build());
     }
 
 }

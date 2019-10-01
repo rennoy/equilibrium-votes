@@ -3,13 +3,14 @@ package com.eosdt.dpos.service.distributionFit;
 import com.eosdt.dpos.election.ElectionConfiguration;
 import com.eosdt.dpos.domain.Candidate;
 import com.eosdt.dpos.domain.Vote;
-import com.eosdt.dpos.service.EquilibriumElectionFromCsv;
+import com.eosdt.dpos.config.EquilibriumElectionFromCsv;
 import org.apache.commons.math3.distribution.BetaDistribution;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 
 import java.lang.reflect.Array;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -32,14 +33,17 @@ public class FitVotesCountPerElectorBetaDensity implements FitVotesCountPerElect
 
         Integer maxVotesPerElector = electionConfiguration.equilibriumElection().getNMaxVotesPerElector();
 
-        Flux<Candidate[]> candidates =
-                this.equilibriumElectionFromCsv.getVotes()
+        List<Candidate[]> candidates =
+                this.equilibriumElectionFromCsv.getVotesInit()
+                        .getVotes()
+                        .stream()
                         .map(Vote::getCandidates)
-                        .filter(cs -> cs.length > 0);
+                        .filter(cs -> cs.length > 0)
+                        .collect(Collectors.toList());
 
         Double mu =
                 candidates
-                .toStream()
+                .stream()
                 .mapToInt(Array::getLength)
                 .mapToDouble(i -> ((double) i) / ((double) maxVotesPerElector))
                 .average()
@@ -47,8 +51,8 @@ public class FitVotesCountPerElectorBetaDensity implements FitVotesCountPerElect
 
         double sigma2 =
                 candidates
+                .stream()
                 .map(Array::getLength)
-                .toStream()
                 .mapToDouble(s ->
                         ( ((double) s) / ((double) maxVotesPerElector) - mu ) *
                                 ( ((double) s)  / ((double) maxVotesPerElector) - mu ))

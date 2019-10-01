@@ -1,10 +1,13 @@
 package com.eosdt.dpos.service.distributionFit;
 
+import com.eosdt.dpos.config.EquilibriumElectionFromCsv;
 import com.eosdt.dpos.domain.Vote;
-import com.eosdt.dpos.service.EquilibriumElectionFromCsv;
-import org.apache.commons.math3.distribution.*;
+import org.apache.commons.math3.distribution.AbstractRealDistribution;
+import org.apache.commons.math3.distribution.GammaDistribution;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Flux;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class FitNUTStakesPerElectorGammaDensity implements FitNUTStakesPerElectorDensity {
@@ -18,18 +21,21 @@ public class FitNUTStakesPerElectorGammaDensity implements FitNUTStakesPerElecto
     @Override
     public AbstractRealDistribution fit() {
 
-        Flux<Integer> NUTHoldings =
-                this.equilibriumElectionFromCsv.getVotes()
-                        .map(Vote::getStake);
+        List<Integer> NUTHoldings =
+                this.equilibriumElectionFromCsv.getVotesInit()
+                        .getVotes()
+                        .stream()
+                        .map(Vote::getStake)
+                        .collect(Collectors.toList());
 
-        double mu = this.equilibriumElectionFromCsv.getVotes().toStream()
-                .mapToInt(Vote::getStake)
+        double mu = NUTHoldings.stream()
+                .mapToInt(h -> h)
                 .average()
                 .orElse(Double.NaN);
 
         double sigma2 =
-                this.equilibriumElectionFromCsv.getVotes().toStream()
-                        .mapToInt(Vote::getStake)
+                NUTHoldings.stream()
+                        .mapToInt(h -> h)
                         .mapToDouble(s ->
                                 ( ((double) s) - mu ) *
                                         ( ((double) s) - mu ))

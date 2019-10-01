@@ -10,6 +10,9 @@ public class ElectionToWinningCandidatesConverter implements Converter<Election,
 
     @Override
     public List<Candidate> convert(Election election) {
+
+        // TODO: select the 10 candidates with the higher NUT votes
+
         return null;
     }
 }

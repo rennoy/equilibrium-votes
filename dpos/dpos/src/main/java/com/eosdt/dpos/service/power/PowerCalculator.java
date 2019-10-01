@@ -2,7 +2,7 @@ package com.eosdt.dpos.service.power;
 
 import com.eosdt.dpos.domain.Election;
 import com.eosdt.dpos.domain.Vote;
-import com.eosdt.dpos.service.EOSElectionFromCsv;
+import com.eosdt.dpos.config.EOSElectionFromCsv;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,6 +20,7 @@ public class PowerCalculator {
 
         for (Vote vote : election.getVotes()) {
 
+            // TODO: use the voteToReward converter
 
         }
 

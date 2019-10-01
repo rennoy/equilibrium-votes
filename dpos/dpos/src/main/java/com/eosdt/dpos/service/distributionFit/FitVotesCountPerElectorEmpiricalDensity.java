@@ -2,13 +2,14 @@ package com.eosdt.dpos.service.distributionFit;
 
 import com.eosdt.dpos.domain.Candidate;
 import com.eosdt.dpos.domain.Vote;
-import com.eosdt.dpos.service.EquilibriumElectionFromCsv;
+import com.eosdt.dpos.config.EquilibriumElectionFromCsv;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 
 import java.lang.reflect.Array;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -31,22 +32,21 @@ public class FitVotesCountPerElectorEmpiricalDensity implements FitVotesCountPer
     @Override
     public Map<Integer, Double> fit() {
 
-        Flux<Candidate[]> candidates =
-                this.equilibriumElectionFromCsv.getVotes()
+        List<Candidate[]> candidates =
+                this.equilibriumElectionFromCsv.getVotesInit()
+                        .getVotes()
+                        .stream()
                         .map(Vote::getCandidates)
-                        .filter(cs -> cs.length > 0);
+                        .filter(cs -> cs.length > 0)
+                        .collect(Collectors.toList());
 
-        Long tot =
-                candidates.toStream()
-                .count();
-
-        return candidates
+        return Flux.fromIterable(candidates)
                     .map(Array::getLength)
                     .groupBy(v -> v)
                     .flatMap(Flux::collectList)
                     .toStream()
                     .collect(Collectors.toMap(
-                            l -> l.get(0), l ->((Integer) l.size()).doubleValue() / tot.doubleValue()));
+                            l -> l.get(0), l ->((Integer) l.size()).doubleValue() / ((double) candidates.size())));
 
     }
 

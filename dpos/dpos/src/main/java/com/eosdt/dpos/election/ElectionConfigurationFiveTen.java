@@ -1,10 +1,12 @@
 package com.eosdt.dpos.election;
 
+import com.eosdt.dpos.config.EOSElectionFromCsv;
 import com.eosdt.dpos.domain.*;
-import com.eosdt.dpos.service.EOSElectionFromCsv;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
-import reactor.core.publisher.Flux;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 @Profile("election_configuration_five_ten")
@@ -26,21 +28,25 @@ public class ElectionConfigurationFiveTen implements ElectionConfiguration {
      */
     public Election EOSElection() {
 
-        Flux<Vote> votesFlux =
-                eosElectionFromCsv.getCandidates().map(candidate ->
-                        new Vote(
-                                new Elector(candidate.getCandidateDesc().getName(),
-                                            candidate.getStakes().doubleValue()),
-                                new Candidate[] {candidate},
-                                candidate.getStakes()));
+        List<Vote> votesList = new ArrayList<>();
+
+        Integer totalStake = 0;
+
+        for (Candidate candidate : eosElectionFromCsv.getCandidatesInit().getCandidates()) {
+
+            votesList.add(new Vote(
+                    new Elector(candidate.getCandidateDesc().getName(),
+                            candidate.getStakes().doubleValue()),
+                    new Candidate[]{candidate},
+                    candidate.getStakes()));
+
+            totalStake = totalStake + candidate.getStakes();
+        }
 
 
-        Vote[] votes = votesFlux.toStream().toArray(Vote[]::new);
-
-        Integer totalStake = votesFlux.toStream()
-                .mapToInt(Vote::getStake)
-                .sum();
-
+        Vote[] votes = votesList.toArray(new Vote[] {});
+        Candidate[] candidates =  eosElectionFromCsv.getCandidatesInit()
+                                        .getCandidates().toArray(new Candidate[] {});
 
         ElectionParams electionParams =  
                 new ElectionParams(
@@ -54,7 +60,7 @@ public class ElectionConfigurationFiveTen implements ElectionConfiguration {
 
         return new Election(
                 electionParams,
-                eosElectionFromCsv.getCandidates().toStream().toArray(Candidate[]::new),
+                candidates,
                 votes
         );
     }
