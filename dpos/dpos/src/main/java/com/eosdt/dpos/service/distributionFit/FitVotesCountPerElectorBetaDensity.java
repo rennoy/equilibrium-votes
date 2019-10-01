@@ -1,9 +1,9 @@
 package com.eosdt.dpos.service.distributionFit;
 
-import com.eosdt.dpos.election.ElectionConfiguration;
 import com.eosdt.dpos.domain.Candidate;
 import com.eosdt.dpos.domain.Vote;
-import com.eosdt.dpos.config.EquilibriumElectionFromCsv;
+import com.eosdt.dpos.domain.VotesInit;
+import com.eosdt.dpos.election.ElectionConfiguration;
 import org.apache.commons.math3.distribution.BetaDistribution;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
@@ -20,12 +20,11 @@ public class FitVotesCountPerElectorBetaDensity implements FitVotesCountPerElect
 
     private final ElectionConfiguration electionConfiguration;
 
-    private final EquilibriumElectionFromCsv equilibriumElectionFromCsv;
+    private final VotesInit votesInit;
 
-    public FitVotesCountPerElectorBetaDensity(ElectionConfiguration electionConfiguration,
-                                              EquilibriumElectionFromCsv equilibriumElectionFromCsv) {
+    public FitVotesCountPerElectorBetaDensity(ElectionConfiguration electionConfiguration, VotesInit votesInit) {
         this.electionConfiguration = electionConfiguration;
-        this.equilibriumElectionFromCsv = equilibriumElectionFromCsv;
+        this.votesInit = votesInit;
     }
 
     @Override
@@ -34,7 +33,7 @@ public class FitVotesCountPerElectorBetaDensity implements FitVotesCountPerElect
         Integer maxVotesPerElector = electionConfiguration.equilibriumElection().getNMaxVotesPerElector();
 
         List<Candidate[]> candidates =
-                this.equilibriumElectionFromCsv.getVotesInit()
+                this.votesInit
                         .getVotes()
                         .stream()
                         .map(Vote::getCandidates)

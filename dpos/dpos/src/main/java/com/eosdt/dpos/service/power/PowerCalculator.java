@@ -1,17 +1,17 @@
 package com.eosdt.dpos.service.power;
 
+import com.eosdt.dpos.domain.CandidatesInit;
 import com.eosdt.dpos.domain.Election;
 import com.eosdt.dpos.domain.Vote;
-import com.eosdt.dpos.config.EOSElectionFromCsv;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PowerCalculator {
 
-    private final EOSElectionFromCsv eosElectionFromCsv;
+    private final CandidatesInit candidatesInit;
 
-    public PowerCalculator(EOSElectionFromCsv eosElectionFromCsv) {
-        this.eosElectionFromCsv = eosElectionFromCsv;
+    public PowerCalculator(CandidatesInit candidatesInit) {
+        this.candidatesInit = candidatesInit;
     }
 
     public Double calculateElectorsAveragePower(Election election) {

@@ -70,19 +70,5 @@ public class EOSElectionFromCsv {
         return new CandidatesInit(candidates);
     }
 
-    /**
-     * returns a single candidate - search in the db
-     * @param name name of the candidate (account name)
-     * @return the Candidate or a new Candidate if not found in the initial list
-     */
-    public Candidate getCandidate(String name) {
-        return getCandidatesInit().getCandidates()
-                .stream()
-                .filter(c -> c.getCandidateDesc().getName().equals(name))
-                .findFirst()
-                .orElse(Candidate.builder()
-                        .candidateDesc(CandidateDesc.builder().name(name).build())
-                        .build());
-    }
 
 }

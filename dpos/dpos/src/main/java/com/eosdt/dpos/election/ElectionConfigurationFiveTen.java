@@ -1,6 +1,5 @@
 package com.eosdt.dpos.election;
 
-import com.eosdt.dpos.config.EOSElectionFromCsv;
 import com.eosdt.dpos.domain.*;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
@@ -12,10 +11,10 @@ import java.util.List;
 @Profile("election_configuration_five_ten")
 public class ElectionConfigurationFiveTen implements ElectionConfiguration {
 
-    private final EOSElectionFromCsv eosElectionFromCsv;
+    private final CandidatesInit candidatesInit;
 
-    public ElectionConfigurationFiveTen(EOSElectionFromCsv eosElectionFromCsv) {
-        this.eosElectionFromCsv = eosElectionFromCsv;
+    public ElectionConfigurationFiveTen(CandidatesInit candidatesInit) {
+        this.candidatesInit = candidatesInit;
     }
 
     /**
@@ -32,7 +31,7 @@ public class ElectionConfigurationFiveTen implements ElectionConfiguration {
 
         Integer totalStake = 0;
 
-        for (Candidate candidate : eosElectionFromCsv.getCandidatesInit().getCandidates()) {
+        for (Candidate candidate : candidatesInit.getCandidates()) {
 
             votesList.add(new Vote(
                     new Elector(candidate.getCandidateDesc().getName(),
@@ -45,7 +44,7 @@ public class ElectionConfigurationFiveTen implements ElectionConfiguration {
 
 
         Vote[] votes = votesList.toArray(new Vote[] {});
-        Candidate[] candidates =  eosElectionFromCsv.getCandidatesInit()
+        Candidate[] candidates =  candidatesInit
                                         .getCandidates().toArray(new Candidate[] {});
 
         ElectionParams electionParams =  

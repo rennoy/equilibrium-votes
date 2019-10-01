@@ -15,5 +15,20 @@ public class CandidatesInit {
     public CandidatesInit() {
         this.candidates = new ArrayList<>();
     }
+
+    /**
+     * returns a single candidate - search in the db
+     * @param name name of the candidate (account name)
+     * @return the Candidate or a new Candidate if not found in the initial list
+     */
+    public Candidate getCandidate(String name) {
+        return candidates
+                .stream()
+                .filter(c -> c.getCandidateDesc().getName().equals(name))
+                .findFirst()
+                .orElse(Candidate.builder()
+                        .candidateDesc(CandidateDesc.builder().name(name).build())
+                        .build());
+    }
 }
 

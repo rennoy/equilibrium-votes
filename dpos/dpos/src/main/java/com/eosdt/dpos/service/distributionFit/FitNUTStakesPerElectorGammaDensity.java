@@ -1,7 +1,7 @@
 package com.eosdt.dpos.service.distributionFit;
 
-import com.eosdt.dpos.config.EquilibriumElectionFromCsv;
 import com.eosdt.dpos.domain.Vote;
+import com.eosdt.dpos.domain.VotesInit;
 import org.apache.commons.math3.distribution.AbstractRealDistribution;
 import org.apache.commons.math3.distribution.GammaDistribution;
 import org.springframework.stereotype.Service;
@@ -12,17 +12,17 @@ import java.util.stream.Collectors;
 @Service
 public class FitNUTStakesPerElectorGammaDensity implements FitNUTStakesPerElectorDensity {
 
-    private final EquilibriumElectionFromCsv equilibriumElectionFromCsv;
+    private final VotesInit votesInit;
 
-    public FitNUTStakesPerElectorGammaDensity(EquilibriumElectionFromCsv equilibriumElectionFromCsv) {
-        this.equilibriumElectionFromCsv = equilibriumElectionFromCsv;
+    public FitNUTStakesPerElectorGammaDensity(VotesInit votesInit) {
+        this.votesInit = votesInit;
     }
 
     @Override
     public AbstractRealDistribution fit() {
 
         List<Integer> NUTHoldings =
-                this.equilibriumElectionFromCsv.getVotesInit()
+                this.votesInit
                         .getVotes()
                         .stream()
                         .map(Vote::getStake)
