@@ -54,7 +54,8 @@ public class ElectionConfigurationFiveTen implements ElectionConfiguration {
                         1,
                         0,
                         21,
-                        totalStake
+                        totalStake,
+                        100.0
                 );
 
         return new Election(
@@ -72,7 +73,8 @@ public class ElectionConfigurationFiveTen implements ElectionConfiguration {
                 5,
                 2,
                 10,
-                5000000
+                5000000,
+                null
         );
     }
 }

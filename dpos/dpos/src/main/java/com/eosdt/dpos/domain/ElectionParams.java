@@ -29,4 +29,9 @@ public class ElectionParams {
      * e.g 5mio EOS staked
      */
     private final Integer stake;
+
+    /**
+    * e.g. 100 EOS
+    **/
+    private final Double standByRewardThreshold;
 }

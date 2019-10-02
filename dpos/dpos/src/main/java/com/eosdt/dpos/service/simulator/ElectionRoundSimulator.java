@@ -6,18 +6,17 @@ import com.eosdt.dpos.domain.Elector;
 import com.eosdt.dpos.domain.Vote;
 import com.eosdt.dpos.election.ElectionConfiguration;
 import com.eosdt.dpos.service.distributionFit.FitNUTStakesPerElectorDensity;
+import com.eosdt.dpos.service.random.UniqueRandomCandidates;
+import com.eosdt.dpos.service.random.UniqueRandomGenerator;
 import org.apache.commons.math3.distribution.AbstractRealDistribution;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
-import java.util.Random;
 import java.util.UUID;
-import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 @Service
 public class ElectionRoundSimulator {
-
-    private final Random random;
 
     private final ElectionConfiguration electionConfiguration;
 
@@ -25,14 +24,17 @@ public class ElectionRoundSimulator {
 
     private final FitNUTStakesPerElectorDensity fitNUTStakesPerElectorDensity;
 
-    public ElectionRoundSimulator(Random random,
-                                  ElectionConfiguration electionConfiguration,
+    private final UniqueRandomCandidates uniqueRandomCandidates;
+
+    public ElectionRoundSimulator(ElectionConfiguration electionConfiguration,
                                   VotesCountPerElectorGenerator votesCountPerElectorGenerator,
-                                  FitNUTStakesPerElectorDensity fitNUTStakesPerElectorDensity) {
-        this.random = random;
+                                  FitNUTStakesPerElectorDensity fitNUTStakesPerElectorDensity,
+                                  UniqueRandomCandidates uniqueRandomCandidates) {
+
         this.electionConfiguration = electionConfiguration;
         this.votesCountPerElectorGenerator = votesCountPerElectorGenerator;
         this.fitNUTStakesPerElectorDensity = fitNUTStakesPerElectorDensity;
+        this.uniqueRandomCandidates = uniqueRandomCandidates;
     }
 
     /**
@@ -71,20 +73,13 @@ public class ElectionRoundSimulator {
 
                 // An elector who has below-2.0 NUT holdings can't vote.
 
-                if (NUTholdings < 2.0) {
+                if (NUTholdings < electionConfiguration.equilibriumElection().getMinTokenHeldForVote()) {
                     return new Vote(elector,
                             new Candidate[] {},
                             0);
                 }
 
-                // The elector's votes are random - TODO: can't vote for the same candidate twice: quick fix: distinct()
-
-                Candidate[] votedFor = IntStream.range(1, 2*votesCount)
-                        .mapToObj(i -> random.nextInt(candidates.length-1))
-                        .distinct()
-                        .limit(votesCount)
-                        .map(r -> candidates[r])
-                        .toArray(Candidate[]::new);
+                Candidate[] votedFor = uniqueRandomCandidates.generate(votesCount);
 
                 return new Vote(
                         elector,

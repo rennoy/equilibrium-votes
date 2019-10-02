@@ -4,10 +4,12 @@ import com.eosdt.dpos.domain.Candidate;
 import com.eosdt.dpos.domain.Election;
 import com.eosdt.dpos.election.ElectionConfiguration;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
+@Service
 public class ElectionToWinningCandidatesConverter implements Converter<Election, List<Candidate>> {
 
     private final ElectionConfiguration electionConfiguration;
@@ -16,7 +18,6 @@ public class ElectionToWinningCandidatesConverter implements Converter<Election,
         this.electionConfiguration = electionConfiguration;
     }
 
-    @Override
     public List<Candidate> convert(Election election) {
 
         Map<Candidate, Integer> electionCount = new HashMap<>();
@@ -27,7 +28,7 @@ public class ElectionToWinningCandidatesConverter implements Converter<Election,
 
                         // Increment with the candidate's number of stakes (NUTs)
 
-                        if (electionCount.containsKey(candidate)) {
+                        if (electionCount.keySet().contains(candidate)) {
                             electionCount.put(candidate, electionCount.get(candidate) + vote.getStake());
                         } else {
                             electionCount.put(candidate, vote.getStake());

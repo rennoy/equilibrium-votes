@@ -2,11 +2,13 @@ package com.eosdt.dpos.service.stakes;
 
 import com.eosdt.dpos.domain.Candidate;
 import com.eosdt.dpos.domain.CandidatesInit;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Service
 public class ProxyStakesReassign {
 
     private final CandidatesInit candidatesInit;
