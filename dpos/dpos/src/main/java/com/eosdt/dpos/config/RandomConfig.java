@@ -12,4 +12,5 @@ public class RandomConfig {
     Random getRandom() {
         return new Random();
     }
+
 }

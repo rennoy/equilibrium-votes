@@ -14,4 +14,5 @@ public class Election {
     private final ElectionParams electionParams;
     private final Candidate[] candidates;
     private final Vote[] votes;
+
 }

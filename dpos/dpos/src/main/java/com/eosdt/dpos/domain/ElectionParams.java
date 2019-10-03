@@ -34,4 +34,5 @@ public class ElectionParams {
     * e.g. 100 EOS
     **/
     private final Double standByRewardThreshold;
+
 }

@@ -76,5 +76,6 @@ public class ElectionConfigurationFiveTen implements ElectionConfiguration {
                 5000000,
                 null
         );
+
     }
 }

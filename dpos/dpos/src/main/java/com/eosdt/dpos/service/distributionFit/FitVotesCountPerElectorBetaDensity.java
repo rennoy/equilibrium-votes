@@ -70,6 +70,5 @@ public class FitVotesCountPerElectorBetaDensity implements FitVotesCountPerElect
                         i -> betaDist.cumulativeProbability(((double)i) / ((double)maxVotesPerElector)) -
                                 betaDist.cumulativeProbability(((double)i-1) / ((double)maxVotesPerElector))));
 
-
     }
 }

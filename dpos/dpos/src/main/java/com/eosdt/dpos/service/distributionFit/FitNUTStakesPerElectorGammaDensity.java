@@ -46,6 +46,7 @@ public class FitNUTStakesPerElectorGammaDensity implements FitNUTStakesPerElecto
         double beta = sigma2 / mu;
 
         return new GammaDistribution(alpha, beta);
+
     }
 }
 

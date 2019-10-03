@@ -5,4 +5,5 @@ import java.util.Map;
 public interface FitVotesCountPerElectorDensity {
 
     Map<Integer, Double> fit();
+
 }

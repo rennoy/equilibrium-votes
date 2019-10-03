@@ -6,4 +6,5 @@ public interface FitNUTStakesPerElectorDensity {
 
     AbstractRealDistribution fit();
 
+
 }

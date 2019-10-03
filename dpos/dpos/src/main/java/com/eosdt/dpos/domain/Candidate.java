@@ -42,4 +42,5 @@ public class Candidate {
     private final Integer jumpInVotes;
 
 
+
 }

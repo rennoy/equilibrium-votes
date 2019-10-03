@@ -7,4 +7,5 @@ public class Elector {
 
     private final String name;
     private final Double holdings;
+
 }

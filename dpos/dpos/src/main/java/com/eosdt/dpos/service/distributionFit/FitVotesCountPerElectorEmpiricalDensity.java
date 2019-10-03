@@ -48,6 +48,7 @@ public class FitVotesCountPerElectorEmpiricalDensity implements FitVotesCountPer
                     .collect(Collectors.toMap(
                             l -> l.get(0), l ->((Integer) l.size()).doubleValue() / ((double) candidates.size())));
 
+
     }
 
 }

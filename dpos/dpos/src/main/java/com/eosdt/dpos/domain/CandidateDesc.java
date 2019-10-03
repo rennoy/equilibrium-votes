@@ -21,4 +21,5 @@ public class CandidateDesc {
      */
     private final String country;
 
+
 }

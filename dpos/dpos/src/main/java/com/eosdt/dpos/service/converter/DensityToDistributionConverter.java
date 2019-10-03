@@ -24,5 +24,6 @@ public class DensityToDistributionConverter implements Converter<Map<Integer, Do
         );
 
         return dist;
+
     }
 }

@@ -90,5 +90,6 @@ public class RewardsPerVoterCalculator {
 
         }
         return extraRewards;
+
     }
 }

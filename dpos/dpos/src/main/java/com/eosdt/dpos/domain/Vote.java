@@ -9,4 +9,5 @@ public class Vote {
     private final Candidate[] candidates;
     private final Integer stake;
 
+
 }

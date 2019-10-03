@@ -28,6 +28,7 @@ public class UniqueRandomCandidates {
                 .stream()
                 .map(r -> candidatesInit.getCandidates().get(r))
                 .toArray(Candidate[]::new);
+
     }
 
 }

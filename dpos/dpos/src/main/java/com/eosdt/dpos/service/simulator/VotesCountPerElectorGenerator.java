@@ -49,5 +49,6 @@ public class VotesCountPerElectorGenerator implements Generator<Flux<Integer>> {
 
                     return b;
                 });
+
     }
 }

@@ -70,5 +70,4 @@ public class EOSElectionFromCsv {
         return new CandidatesInit(candidates);
     }
 
-
 }

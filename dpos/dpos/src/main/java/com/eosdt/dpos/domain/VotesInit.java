@@ -15,4 +15,5 @@ public class VotesInit {
     public VotesInit() {
         this.votes = new ArrayList<>();
     }
+
 }

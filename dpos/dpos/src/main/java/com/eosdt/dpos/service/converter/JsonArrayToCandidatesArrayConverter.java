@@ -26,5 +26,6 @@ public class JsonArrayToCandidatesArrayConverter implements Converter<JSONArray,
                 .toStream()
                 .toArray(Candidate[]::new);
 
+
     }
 }

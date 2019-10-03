@@ -80,5 +80,6 @@ public class EquilibriumElectionFromCsv {
 
         return new VotesInit(votes);
 
+
     }
 }

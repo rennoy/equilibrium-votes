@@ -29,6 +29,7 @@ public class CandidatesInit {
                 .orElse(Candidate.builder()
                         .candidateDesc(CandidateDesc.builder().name(name).build())
                         .build());
+
     }
 }
 

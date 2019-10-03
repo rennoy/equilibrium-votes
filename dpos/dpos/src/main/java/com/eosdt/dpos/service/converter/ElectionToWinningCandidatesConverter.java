@@ -42,5 +42,6 @@ public class ElectionToWinningCandidatesConverter implements Converter<Election,
                 .limit(electionConfiguration.equilibriumElection().getNElected())
                 .collect(Collectors.toList());
 
+
     }
 }

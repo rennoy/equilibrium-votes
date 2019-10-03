@@ -96,5 +96,6 @@ public class ElectionRoundSimulator {
         return new Election(electionConfiguration.equilibriumElection(),
                 candidates,
                 votes);
+
     }
 }
