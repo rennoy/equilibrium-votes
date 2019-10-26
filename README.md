@@ -271,6 +271,10 @@ serious steps to experiment and ensure that this power will benefit both the EOS
 the long-run. The first challenge was to set a reasonable framework inspired for the field of political science to test 
 the various election rules that are considered. 
 
+
+
+
+
 [1] The Mathematics and Statistics of Voting Power, Andrew Gelman, Jonathan N. Katz and Francis Tuerlinckx, 
 Statistical Science 2002, Vol. 17, No. 4, 420–435
 
