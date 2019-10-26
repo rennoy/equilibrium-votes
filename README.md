@@ -209,8 +209,8 @@ We can calibrate it with two constraints, one for each tail.
 **In contrast to a random voting process (i.e. uniform distribution) where each of the 100 BPs candidate has the same one 
 hundredth of the votes assigned to him, the distribution of votes here is slightly positively skewed towards the top 21.** 
 
-Also looking at the “NUT Votes per EOS Rank” histogram, **there is no specific concentration of votes around the critical 
-21st place or around the 70th place:**
+Also looking at the “NUT Votes per EOS Rank” histogram, [**there is no specific concentration of votes around the critical 
+21st place or around the 70th place:**](VotingRound.png)
 
 The Equilibrium voters tend to vote for their preferences first, and not specifically for the candidates for which their 
 vote can be more decisive, namely candidates near the 21st or 70th place. Their vote carries value anyway, and their 
@@ -230,7 +230,7 @@ So to summarize our little exercise: as suggested in the previous version, we ch
 with the BP EOS ranking in the previous round) to capture the slight skew towards the 21st top BPs that we observe. But 
 that’s good enough to start with...
 
-For the coders, the (rough) simulation code is available on [github](https://github.com/rennoy/equilibrium-votes).
+For the coders, the (rough) simulation code is available on [github](https://github.com/rennoy/equilibrium-votes).  
 
 On figure [3], we compute the average and maximum power of an elector for increasing levels of NUT holdings.
 
