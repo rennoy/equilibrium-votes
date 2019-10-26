@@ -127,7 +127,7 @@ in the last election. As a result, the choice of up to 5 candidates per voter ha
 concentration of China-located EOS holders/voters, the “votes concentration” question is on everyone’s lips.The catastrophic scenario 
 is the one where a small number of BPs hold the large majority of EOS. Each one of them can vote for their own candidacy, or 
 maliciously bribe voters. They can produce/acquire more EOS with the rewards, or with the ill-gotten proceeds from selling their 
-excess EOS votes. They can secure their dominant position even further. The cycle favors concentration and decreases the 
+excess EOS votes. It can secure their dominant position even further. The cycle favors concentration and decreases the 
 median voting power. 
 
 In Equilibrium’s case, **if we open the election outcome to 30 winners instead of 5, it would most likely be much easier 
