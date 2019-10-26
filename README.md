@@ -193,7 +193,7 @@ We have “only” C(5,100) scenarios! Much more reasonable for my computer! (No
 Among the observations we would be using:
 
 - **There is a clear concentration of single and 5-choice voters**. 50.8% of the accounts voted for 5 candidates. 
-27.9% of the accounts were single voter accounts. The distribution looks like a 
+27.9% of the accounts were single voter accounts. The [distribution](VotingProfile.png) looks like a 
 [beta distribution with parameters below 1](https://en.wikipedia.org/wiki/Beta_distribution). 
 We can calibrate it with two constraints, one for each tail.
 
