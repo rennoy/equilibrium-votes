@@ -28,7 +28,7 @@ holding a low NUT quantity. Currently, a voter must hold at least two to partici
 justification is simple: with great power comes great responsibility (the Peter Parker principle)
 
 
-**1.1 The current voting models**
+**1.1/ The current voting models**
 
 **EOS:**
 
@@ -68,7 +68,7 @@ In the EOS voting stage, **Equilibrium will vote for the 10 elected BPs**, assig
  - The voting sessions repeat every 10 days.
  
  
-**1.2 How do we measure voting power?**
+**1.2/ How do we measure voting power?**
 
 As John Banzhaf explains in his article [2](http://www.math.ust.hk/~yangwang/Course/2014SSMTH291/Lecture%207%20(Voting)/Banzhaf-one%20man%20n%20votes.pdf): 
 
