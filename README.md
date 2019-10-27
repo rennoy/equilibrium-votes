@@ -182,8 +182,8 @@ If the above statement seems like gibberish, let’s get real: For M=100 and r=5
 To alleviate our burden, let’s focus on the single reasonable voter: we are only interested in the 5 choices of this particular 
 voter. We assume that: 
 
-- the [EOS voting round](https://github.com/rennoy/equilibrium-votes/blob/master/dpos/dpos/src/main/resources/EOSRound.csv) 
-is set, and all other [Equilibrium voters have already voted](https://github.com/rennoy/equilibrium-votes/blob/master/dpos/dpos/src/main/resources/EquilibriumRound.csv). 
+- the [EOS voting round](https://github.com/rennoy/equilibrium-votes/blob/master/dpos/dpos/src/main/resources/EOSStage.csv) 
+is set, and all other [Equilibrium voters have already voted](https://github.com/rennoy/equilibrium-votes/blob/master/dpos/dpos/src/main/resources/EquilibriumStage.csv). 
 - the voter who did not vote so far changes his mind, and exercises the full power of his 5 votes. 
 
 
