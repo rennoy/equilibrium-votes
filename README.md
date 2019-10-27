@@ -193,7 +193,7 @@ We have “only” C(5,100) scenarios! Much more reasonable for my computer! (No
 Among the observations we would be using:
 
 - **There is a clear concentration of single and 5-choice voters**. 50.8% of the accounts voted for 5 candidates. 
-27.9% of the accounts were single voter accounts. The [distribution](VotingProfile.PNG) looks like a 
+27.9% of the accounts were single voter accounts. The [distribution](https://github.com/rennoy/equilibrium-votes/blob/master/VotingProfile.PNG) looks like a 
 [beta distribution with parameters below 1](https://en.wikipedia.org/wiki/Beta_distribution). 
 We can calibrate it with two constraints, one for each tail.
 
@@ -210,7 +210,7 @@ We can calibrate it with two constraints, one for each tail.
 hundredth of the votes assigned to him, the distribution of votes here is slightly positively skewed towards the top 21.** 
 
 Also looking at the “NUT Votes per EOS Rank” histogram, [**there is no specific concentration of votes around the critical 
-21st place or around the 70th place:**](VotingRound.PNG)
+21st place or around the 70th place:**](https://github.com/rennoy/equilibrium-votes/blob/master/VotingRound.png)
 
 The Equilibrium voters tend to vote for their preferences first, and not specifically for the candidates for which their 
 vote can be more decisive, namely candidates near the 21st or 70th place. Their vote carries value anyway, and their 
@@ -232,7 +232,7 @@ that’s good enough to start with...
 
 For the coders, the (rough) simulation code is available on [github](https://github.com/rennoy/equilibrium-votes).  
 
-On figure [3](VotingPower.PNG), we compute the average and maximum power of an elector for increasing levels of NUT holdings.
+On figure [3](https://github.com/rennoy/equilibrium-votes/blob/master/VotingPower.PNG), we compute the average and maximum power of an elector for increasing levels of NUT holdings.
 
 **A voter with 760 NUTs will have the maximum potential impact over the EOS election**. Anyone holding more than 760 NUTs 
 has the same exact voting power! So if someone is interested in NUTs for the voting process, currently holding 760 NUTs 
@@ -261,7 +261,7 @@ If the voter is not interested in aiming for the best rewards assignment, then h
 that on average over all simulations, the voter’s choice will result in giving 76.21 EOS per day to be distributed 
 among the 5 BPs he votes for.
 
-Figure [3](VotingPower.PNG) also shows that for a 10 winners Equilibrium election, there isn’t a significant difference in voting power between the 2-NUT voter and the 60-NUT voter. In the current setup, raising the minimum required NUT holdings from 2 to 60 will have no serious incidence on the outcome of the Equilibrium proxy election.
+Figure [3](https://github.com/rennoy/equilibrium-votes/blob/master/VotingPower.PNG) also shows that for a 10 winners Equilibrium election, there isn’t a significant difference in voting power between the 2-NUT voter and the 60-NUT voter. In the current setup, raising the minimum required NUT holdings from 2 to 60 will have no serious incidence on the outcome of the Equilibrium proxy election.
 
 
 The Equilibrium proxy is a powerful tool to leverage a NUT holder vote in the EOS election. Equilibrium is taking 
