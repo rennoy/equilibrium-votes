@@ -232,7 +232,7 @@ that’s good enough to start with...
 
 For the coders, the (rough) simulation code is available on [github](https://github.com/rennoy/equilibrium-votes).  
 
-On figure [3](VotingPower.png), we compute the average and maximum power of an elector for increasing levels of NUT holdings.
+On figure [3](VotingPower.PNG), we compute the average and maximum power of an elector for increasing levels of NUT holdings.
 
 **A voter with 760 NUTs will have the maximum potential impact over the EOS election**. Anyone holding more than 760 NUTs 
 has the same exact voting power! So if someone is interested in NUTs for the voting process, currently holding 760 NUTs 
@@ -261,7 +261,7 @@ If the voter is not interested in aiming for the best rewards assignment, then h
 that on average over all simulations, the voter’s choice will result in giving 76.21 EOS per day to be distributed 
 among the 5 BPs he votes for.
 
-Figure [3](VotingPower.png) also shows that for a 10 winners Equilibrium election, there isn’t a significant difference in voting power between the 2-NUT voter and the 60-NUT voter. In the current setup, raising the minimum required NUT holdings from 2 to 60 will have no serious incidence on the outcome of the Equilibrium proxy election.
+Figure [3](VotingPower.PNG) also shows that for a 10 winners Equilibrium election, there isn’t a significant difference in voting power between the 2-NUT voter and the 60-NUT voter. In the current setup, raising the minimum required NUT holdings from 2 to 60 will have no serious incidence on the outcome of the Equilibrium proxy election.
 
 
 The Equilibrium proxy is a powerful tool to leverage a NUT holder vote in the EOS election. Equilibrium is taking 
