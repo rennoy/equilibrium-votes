@@ -1,6 +1,6 @@
 **Quantitative approach to the EOS block producers election: Your vote counts!** 
 
-There is a growing dissatisfaction raised by the EOS community, and Block Produces (BP) over the BPs election rules: 
+There is a growing dissatisfaction raised by the EOS community, and Block Producers (BP) over the BPs election rules: 
 questions specifically related to the community’s lack of power in these elections against a concentrated growing BP power.
 
 The [controversy](https://www.coindesk.com/everyones-worst-fears-about-eos-are-proving-true) around the increased concentration 
