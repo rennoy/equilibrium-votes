@@ -4,9 +4,8 @@ There is a growing dissatisfaction raised by the EOS community, and Block Produc
 questions specifically related to the community’s lack of power in these elections against a concentrated growing BP power.
 
 The [controversy](https://www.coindesk.com/everyones-worst-fears-about-eos-are-proving-true) around the increased concentration 
-of China-located EOS holders/voters is on everyone's lips. A small number of BPs that holds or controls the majority of 
-circulating EOS represents a significant risk over the network’s integrity. One reason is that 15 colluding BPs have the power 
-to approve or reject a new block and trigger a hard fork. 
+of China-located EOS holders/voters is on everyone's lips. A small number of BPs that holds a majority of 
+EOS tokens could, in extreme scenarios, represent a significant risk over the network’s integrity. One reason is that 15 colluding BPs have the power to approve or reject a new block and trigger a hard fork. 
 
 A BP can vote for its own candidacy, or maliciously bribe voters. It can produce/acquire more EOS with the rewards, or with the 
 ill-gotten proceeds from selling their excess EOS votes, so they can secure their dominant position even further. The cycle 
@@ -43,8 +42,7 @@ informed while also security via block producing decentralization.
 The mechanics are the following: to vote for a block producer within the EOS platform, a voter needs to be an EOS currency holder 
 and must stake this EOS holdings to get the right to vote for up to 30 candidates. Each candidate will receive the full amount 
 of user’s holdings. Once the votes are cast, the 21 BPs with the highest number of votes will get the most substantial reward. 
-They will share 5% of the annual EOS inflation. The remaining candidates will share 15% of the annual inflation. However, among 
-them, only those that have a calculated daily reward above 100 EOS will actually receive the reward.
+They will share 5% of the annual EOS inflation amount. The remaining candidates will share 15% of the annual inflation amount. However, among them, only those that have a calculated daily reward above 100 EOS will actually receive the reward.
 
 But no need to vote personally. The great EOS feature is that voters can delegate their voting power to so-called proxies. 
 These proxies use the amount of EOS they hold to stake and vote. The higher the total EOS staked in Equilibrium, the higher the 
